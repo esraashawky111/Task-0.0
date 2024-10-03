@@ -125,8 +125,8 @@ int main() {
       b8:	0e 94 3a 06 	call	0xc74	; 0xc74 <PORT_Init>
 	LCD_Init();
       bc:	0e 94 67 00 	call	0xce	; 0xce <LCD_Init>
-  //  Sine_with_lut();
-    Sine_without_lut();
+  // Sine_with_lut();
+   Sine_without_lut();
       c0:	0e 94 02 06 	call	0xc04	; 0xc04 <Sine_without_lut>
 	return 0;
       c4:	80 e0       	ldi	r24, 0x00	; 0

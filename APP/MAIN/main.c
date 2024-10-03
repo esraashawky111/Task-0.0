@@ -93,8 +93,8 @@ int main()
 int main() {
 	PORT_Init();
 	LCD_Init();
-  //  Sine_with_lut();
-    Sine_without_lut();
+  // Sine_with_lut();
+   Sine_without_lut();
 	return 0;
 }
 
