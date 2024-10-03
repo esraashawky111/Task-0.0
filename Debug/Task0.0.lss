@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000cfb  00000000  00000000  00002dfb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000011d6  00000000  00000000  00003af6  2**0
+  8 .debug_line   000011ca  00000000  00000000  00003af6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000007bc  00000000  00000000  00004ccc  2**2
+  9 .debug_frame  000007bc  00000000  00000000  00004cc0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000008d9  00000000  00000000  00005488  2**0
+ 10 .debug_str    000008d9  00000000  00000000  0000547c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000f92  00000000  00000000  00005d61  2**0
+ 11 .debug_loc    00000f92  00000000  00000000  00005d55  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000001b8  00000000  00000000  00006cf3  2**0
+ 12 .debug_ranges 000001b8  00000000  00000000  00006ce7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -125,7 +125,7 @@ int main() {
       b8:	0e 94 3a 06 	call	0xc74	; 0xc74 <PORT_Init>
 	LCD_Init();
       bc:	0e 94 67 00 	call	0xce	; 0xce <LCD_Init>
-  // Sine_with_lut();
+//  Sine_with_lut();
    Sine_without_lut();
       c0:	0e 94 02 06 	call	0xc04	; 0xc04 <Sine_without_lut>
 	return 0;

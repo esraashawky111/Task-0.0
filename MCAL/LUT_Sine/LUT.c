@@ -107,7 +107,7 @@ void  Sine_with_lut(){
 	while(1){
 	// Setup timer
 	double sine_from_table = 0.00;
-	DIO_WriteChennel(PORTC_PIN1,PIN_HIGH);
+	//DIO_WriteChennel(PORTC_PIN1,PIN_HIGH);
 	//TCNT0 = 0;
 	for (uint16_t i = 0; i < 1000; i++) {
 		sine_from_table = sine_lookup_table[45];
@@ -115,7 +115,7 @@ void  Sine_with_lut(){
 	//Counter1 = TCNT0;
 	//LCD_WriteInteger(Counter1);
 	//LCD_WriteString(" ");
-	 DIO_WriteChennel(PORTC_PIN1,PIN_LOW);
+	// DIO_WriteChennel(PORTC_PIN1,PIN_LOW);
 	sine_from_table = (double) sine_from_table/1000.0;
 	// Display counter if need
 	}
