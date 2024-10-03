@@ -1,5 +1,5 @@
 # C Task 0.0
- **Embedded Software Gems ,Mentor Eng: Ahmed Tolba**
+ # Embedded Software Gems ,Mentor Eng: Ahmed Tolba
  __This repository focuses on evaluating different tasks related to the performance, memory usage, and precision for embedded systems. Each task compares
    two or more methods for solving a specific problem.__
  **why we use Look up table to generate sine wave..?**
@@ -10,13 +10,13 @@
 1. __Memory Usage__: A lookup table requires memory to store precomputed sine values. If high precision is needed (e.g., for a high-resolution sine wave), the table can become quite large, especially in systems with limited memory capacity.
 2. __Limited Resolution__: The accuracy of a sine wave generated from a lookup table is limited by the number of entries in the table. If the table doesn't have enough points, the resulting sine wave may suffer from aliasing or quantization errors.
    
-   **The result for code with LUT**
+   ## The result for code with LUT
    
 
 The sine values correspond to a sine wave over 360 degrees, starting from 0 and progressing to 360 degrees. Since the code cycles every 360 samples (i % LUT_SIZE), samples 360 to 999 will repeat the sine wave values from the start.
 
 
-**SIZE of assembly code is bigger than in the second case**
+# SIZE of assembly code is bigger than in the second case.
 
 **Execation time is =97 micro second**
 
@@ -32,7 +32,7 @@ The funcation you've written will generate a sine wave using The C Standard Libr
                         **///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////**
                                    *//////////////////////////////////////////////////////////////////////////////////////////////////////////////**
                                              **///////////////////////////////////////////////////////////////////////////////////**
-                                                   ___Task 0.0 /Part 2: Using Fixed-Point Math for Floating-Point Operations___
+                                                   # Task 0.0 /Part 2: Using Fixed-Point Math for Floating-Point Operations. 
 
 
 Arithmetic operations using fixed-point math and floating-point math have distinct differences in terms of precision, performance, and use cases. Here’s a comparison:
