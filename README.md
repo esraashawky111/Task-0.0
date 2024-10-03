@@ -1,6 +1,6 @@
 # C Task 0.0
  # Embedded Software Gems ,Mentor Eng: Ahmed Tolba
- __This repository focuses on evaluating different tasks related to the performance, memory usage, and precision for embedded systems. Each task compares
+ ##This repository focuses on evaluating different tasks related to the performance, memory usage, and precision for embedded systems. Each task compares
    two or more methods for solving a specific problem.__
  **why we use Look up table to generate sine wave..?**
  1. __Efficiency__: Computing a sine function in real-time using mathematical operations like trigonometric functions can be computationally expensive, especially in systems with limited processing power (like microcontrollers). A lookup table allows the system to retrieve precomputed sine values almost instantly.
@@ -17,19 +17,26 @@
 The sine values correspond to a sine wave over 360 degrees, starting from 0 and progressing to 360 degrees. Since the code cycles every 360 samples (i % LUT_SIZE), samples 360 to 999 will repeat the sine wave values from the start.
 
 
-# SIZE of assembly code is bigger than in the second case.
+ SIZE of assembly code is bigger than in the second case.
 
-**Execation time is =97 micro second**
+**Execution time is =97 micro second**
 
 
-                                      **///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////**
+                                      **//////////////////////////////////////////**
 
 __THE result of code without using LUTs:__
 
+![This is signal waveform](https://github.com/esraashawky111/Task-0.0/blob/main/Signal_without%20_LUT.png)
 The funcation you've written will generate a sine wave using The C Standard Library (math.h) offers functions.
 *SIZE of assembly without usging LUT IS less in the first case *
 
 **Execution time = 160 micro second**
+# The result of Execuation time of using LUT VS without LUT
+![This is execuation time](https://github.com/esraashawky111/Task-0.0/blob/main/EXE%20_time%20%20LUT%20VS%20Without%20LUT.png)
+ ## The code implementation 
+ 1. ![LUT.h](https://github.com/esraashawky111/Task-0.0/blob/main/LUT.h)
+ 2. ![LUT.c](https://github.com/esraashawky111/Task-0.0/blob/main/LUT.c)
+
                         **///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////**
                                    *//////////////////////////////////////////////////////////////////////////////////////////////////////////////**
                                              **///////////////////////////////////////////////////////////////////////////////////**
@@ -152,9 +159,15 @@ Offers better accuracy for numbers of different magnitudes but can introduce rou
    Fixed-point: 91 micro second
 
    Floating-point: 182 micro second
+   ## Code implementation
+   ![FXP.h](https://github.com/esraashawky111/Task-0.0/blob/main/FXP.h)
+   ![FPX.c](https://github.com/esraashawky111/Task-0.0/blob/main/FXP.c)
 
+   ### The operation result of using fixed operation
+   ![FXP_Operation](https://github.com/esraashawky111/Task-0.0/blob/main/FXP%20Operation.png)
    
-   
+   ### The Execuation time by using FXP VS Floating operation
+   ![EXE_TIME](https://github.com/esraashawky111/Task-0.0/blob/main/FXP%20VS%20Floating.png)
 
 **Summary**:
 
