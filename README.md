@@ -11,7 +11,8 @@
 2. __Limited Resolution__: The accuracy of a sine wave generated from a lookup table is limited by the number of entries in the table. If the table doesn't have enough points, the resulting sine wave may suffer from aliasing or quantization errors.
    
    ## The result for code with LUT
-   
+   ![This is signal waveform](https://github.com/esraashawky111/Task-0.0/blob/main/Signal%20by%20using%20LUT.png)
+    
 
 The sine values correspond to a sine wave over 360 degrees, starting from 0 and progressing to 360 degrees. Since the code cycles every 360 samples (i % LUT_SIZE), samples 360 to 999 will repeat the sine wave values from the start.
 
