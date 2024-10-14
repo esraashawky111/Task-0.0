@@ -24,6 +24,9 @@
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
 
+
+
+
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
@@ -190,6 +193,7 @@ ISR(ADC_vect)
 
 ISR(TIMER0_OVF_vect)
 {
+	/*
 	static uint8_t INT_CNT_l = 0;
 	
 	INT_CNT_l++;
@@ -199,11 +203,25 @@ ISR(TIMER0_OVF_vect)
 		(*CallBack_PtrFunc[Timer_Counter0_Overflow_VECTOR_INDEX])();
 		INT_CNT_l = 0;
 		TCNT0 = TIMER0_Init_Value_g ;
+		*/
+	static uint32_t cnt =0 ;
+	cnt++;
+	if (cnt==Timer0_Total_num_ovfs)
+	{
+		cnt=0;
+		TCNT0=Timer0_Init_Value;
+		if(CallBack_PtrFunc[Timer_Counter0_Overflow_VECTOR_INDEX]!=Null){
+			(CallBack_PtrFunc[Timer_Counter0_Overflow_VECTOR_INDEX])();
+			
+		}
 	}
+	
 }
+
 
 ISR(TIMER1_COMPA_vect)
 {
+
 	static uint8_t INT_CNT_l = 0;
 	INT_CNT_l++;
 	if(INT_CNT_l == 1)
@@ -213,17 +231,19 @@ ISR(TIMER1_COMPA_vect)
 	}
 }
 
-ISR(TIMER1_OVF_vect)
-{
-	
-	TIMER1_Number_OVRflows_g++;
+ISR (TIMER1_OVF_vect){
 
+   TCNT1= 60000;
+  if(CallBack_PtrFunc[Timer_Counter1_Overflow_VECTOR_INDEX] != Null)
+  {
+	  (*CallBack_PtrFunc[Timer_Counter1_Overflow_VECTOR_INDEX])();
+  }
 }
 
 
 ISR(TIMER1_CAPT_vect)
 {
-
+ 
 	Capture_Flag++;
 
 	if(Capture_Flag == 1)
@@ -248,7 +268,41 @@ ISR(TIMER1_CAPT_vect)
 	}
 
 }
+ISR(TIMER2_OVF_vect){
+	static uint32_t cnt =0 ;
+	cnt++;
+	if (cnt== Timer2_Total_num_ovfs)
+	{
+		cnt=0;
+		TCNT2=Timer2_Init_Value;
+		if(CallBack_PtrFunc[Timer_Counter2_Overflow_VECTOR_INDEX]!=Null){
+			(CallBack_PtrFunc[Timer_Counter2_Overflow_VECTOR_INDEX])();
+		}
+	}
+}
 
+ISR(TIMER2_COMP_vect){
+	static uint32_t cnt =0 ;
+	if (Timer2_Total_num_compare_match>=1)
+	{
+		OCR2 = TIMER2_COUNTING_REG_CAPACITY;
+		if (cnt == Timer2_Total_num_compare_match)
+		{
+			if(CallBack_PtrFunc[Timer_Counter2_Compare_Match_VECTOR_INDEX]!=Null){
+				(CallBack_PtrFunc[Timer_Counter2_Compare_Match_VECTOR_INDEX])();
+			}
+			cnt=0;
+			OCR2 = Timer2_compare_Reg_init;
+		}
+		else cnt++;
+	}
+	else {
+		if(CallBack_PtrFunc[Timer_Counter2_Compare_Match_VECTOR_INDEX]!=Null){
+			(CallBack_PtrFunc[Timer_Counter2_Compare_Match_VECTOR_INDEX])();
+			OCR2 = Timer2_Total_num_of_ticks -1;
+		}
+	}
+}
 
 ISR(USART_RXC_vect)
 {
