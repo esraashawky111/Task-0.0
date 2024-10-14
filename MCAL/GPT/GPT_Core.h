@@ -67,6 +67,61 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
+#define TIMER0_SET_NO_CLK_SRC() (TCCR0_bits.CS=0)
+#define TIMER0_SET_PRESCALER_OFF() (TCCR0_bits.CS=1)
+#define TIMER0_SET_PRESCALER_8() (TCCR0_bits.CS=2)
+#define TIMER0_SET_PRESCALER_64() (TCCR0_bits.CS=3)
+#define TIMER0_SET_PRESCALER_256 () (TCCR0_bits.CS=4)
+#define TIMER0_SET_PRESCALER_1024() (TCCR0_bits.CS=5)
+#define TIMER0_SET_EXT_CLK_T0_FALLING_EDGE() (TCCR0_bits.CS=6)
+#define TIMER0_SET_EXT_CLK_T0_RISING_EDGE()  (TCCR0_bits.CS=7)
+
+#define TIMER1_SET_NO_CLK_SRC() (TCCR1_bits.CS=0)
+#define TIMER1_SET_PRESCALER_OFF() (TCCR1_bits.CS=1)
+#define TIMER1_SET_PRESCALER_8() (TCCR1_bits.CS=2)
+#define TIMER1_SET_PRESCALER_64() (TCCR1_bits.CS=3)
+#define TIMER1_SET_PRESCALER_256 () (TCCR1_bits.CS=4)
+#define TIMER1_SET_PRESCALER_1024() (TCCR1_bits.CS=5)
+#define TIMER1_SET_EXT_CLK_T0_FALLING_EDGE() (TCCR1_bits.CS=6)
+#define TIMER1_SET_EXT_CLK_T0_RISING_EDGE()  (TCCR1_bits.CS=7)
+
+#define TIMER2_SET_NO_CLK_SRC()    (TCCR2_bits. _CS2=0)
+#define TIMER2_SET_PRESCALER_OFF()  (TCCR2_bits._CS2=1)
+#define TIMER2_SET_PRESCALER_8()   (TCCR2_bits. _CS2=2)
+#define TIMER2_SET_PRESCALER_32()   (TCCR2_bits._CS2=3)
+#define TIMER2_SET_PRESCALER_64()   (TCCR2_bits._CS2=4)
+#define TIMER2_SET_PRESCALER_128()  (TCCR2_bits._CS2=5)
+#define TIMER2_SET_PRESCALER_256 () (TCCR2_bits._CS2=6)
+#define TIMER2_SET_PRESCALER_1024() (TCCR2_bits._CS2=7)
+
+
+#define SET_TIMER0_NORMAL_MODE() TCCR0_bits.WGM00=0;TCCR0_bits.WGM01=0
+#define SET_TIMER0_CTC_MODE() TCCR0_bits.WGM00=0;TCCR0_bits.WGM01=1
+
+#define SET_TIMER2_NORMAL_MODE() TCCR2_bits._WGM20=0;TCCR2_bits._WGM21=0
+#define SET_TIMER2_CTC_MODE() TCCR2_bits._WGM20=0;TCCR2_bits._WGM21=1
+#define SET_PWM2_FAST_MODE() TCCR2_bits._WGM20=1;TCCR2_bits._WGM21=1
+#define SET_PWM2_NON_INVERTED_MODE() TCCR2_bits._COM2=2
+
+#define SET_TIMER1_NORMAL_MODE() TCCR1_bits.WGM13=0;TCCR1_bits.WGM12=0;TCCR1_bits.WGM11=0;TCCR1_bits.WGM10=0
+#define SET_TIMER1_CTC_MODE() TCCR1_bits.WGM13=0;TCCR1_bits.WGM12=1;TCCR1_bits.WGM11=0;TCCR1_bits.WGM10=0
+
+
+#define SET_TIMER0_OVF_INTERRUPT_ENABLE() TIMSK_bits._TOIE0=INTERRUPT_ENABLED
+#define SET_TIMER0_OVF_INTERRUPT_DISABLE() TIMSK_bits._TOIE0=INTERRUPT_DISABLED
+#define SET_TIMER0_CTC_INTERRUPT_ENABLE() TIMSK_bits.OCIE0=INTERRUPT_ENABLED
+#define SET_TIMER0_CTC_INTERRUPT_DISABLE() TIMSK_bits.OCIE0=INTERRUPT_DISABLED
+
+#define SET_TIMER2_OVF_INTERRUPT_ENABLE()  TIMSK_bits.TOIE2=INTERRUPT_ENABLED
+#define SET_TIMER2_OVF_INTERRUPT_DISABLE() TIMSK_bits.TOIE2=INTERRUPT_DISABLED
+#define SET_TIMER2_CTC_INTERRUPT_ENABLE()  TIMSK_bits.OCIE2=INTERRUPT_ENABLED
+#define SET_TIMER2_CTC_INTERRUPT_DISABLE() TIMSK_bits.OCIE2=INTERRUPT_DISABLED
+
+#define SET_TIMER1_OVF_INTERRUPT_ENABLE() TIMSK_bits.TOIE1=INTERRUPT_ENABLED
+#define SET_TIMER1_OVF_INTERRUPT_DISABLE() TIMSK_bits.TOIE1=INTERRUPT_DISABLED
+#define SET_TIMER1_CTC_INTERRUPT_ENABLE() TIMSK_bits.OCIE1A=INTERRUPT_ENABLED
+#define SET_TIMER1_CTC_INTERRUPT_DISABLE() TIMSK_bits.OCIE1A=INTERRUPT_DISABLED
+#define CLEAR_TIMER1_COUNTING_REG() TCNT1 =0
 
 
 /**********************************************************************************************************************
@@ -77,6 +132,24 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
+extern volatile uint32_t Timer0_Total_num_ovfs;
+extern volatile uint32_t Timer0_Init_Value;
+extern volatile uint32_t Timer0_Total_num_compare_match;
+extern volatile uint32_t Timer0_compare_Reg_init;
+extern volatile uint32_t Timer0_Total_num_of_ticks;
+extern volatile uint32_t Timer1_Total_num_compare_match;
+extern volatile uint32_t Timer1_compare_Reg_init;
+extern volatile uint32_t Timer1_OVF_Cnt;
+extern volatile uint32_t Timer1_Total_num_ovfs;
+extern volatile uint32_t Timer1_Init_Value;
+extern uint16_t Timer1_Prescaler_value;
+
+extern volatile uint32_t Timer2_Total_num_ovfs;
+extern volatile uint32_t Timer2_Init_Value;
+extern volatile uint32_t Timer2_Total_num_compare_match;
+extern volatile uint32_t Timer2_compare_Reg_init;
+extern volatile uint32_t Timer2_TickTime;
+extern volatile uint32_t Timer2_Total_num_of_ticks;
 
  
 /**********************************************************************************************************************
@@ -90,6 +163,7 @@ void GPT_SetTime(void);
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
 
 
 
