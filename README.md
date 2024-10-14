@@ -178,30 +178,43 @@ Floating-point: Better for applications requiring a wide range of values and fle
 
 Choosing between the two depends on the application needs: performance, range, and precision requirements.
 
-#Task 0.0 / Part 3: Event-Based Systems in Embedded Software
-##Overview of Event-Based Systems
+# Task 0.0 / Part 3: Event-Based Systems in Embedded Software
+## Overview of Event-Based Systems
 Event-based systems are architectures that respond to events or changes in state rather than following a predetermined sequence of operations. In embedded systems, this approach is particularly useful for managing asynchronous inputs and outputs, allowing the system to react promptly to external stimuli.
 
-##Key Features
+## Key Features :
+
 1_Asynchronous Processing: Event-based systems can handle multiple events simultaneously without blocking the main execution flow. This is crucial for real-time applications where timely responses are essential.
 
 2_Decoupling of Components: Components in an event-based system can operate independently, leading to better modularity and easier maintenance. This decoupling allows for more straightforward updates and testing.
 
 3_Resource Efficiency: By only processing events when they occur, these systems can be more efficient in terms of CPU and memory usage, which is vital for resource-constrained embedded systems.
 
-##Advantages of Event-Based Systems
+## Advantages of Event-Based Systems :
+
 *Responsiveness: Faster reaction times to external events, improving user experience and system performance.
+
 *Scalability: Easier to scale the system by adding new event handlers without significant changes to existing code.
+
 *Flexibility: Supports dynamic behavior changes, allowing the system to adapt to varying conditions or requirements.
-##Example Use Cases
+
+## Example Use Cases :
+
 *Sensor Monitoring: Continuously monitoring sensors and triggering actions based on specific thresholds.
+
 *User Interfaces: Responding to user inputs (e.g., button presses) without polling.
+
 *Communication Protocols: Handling incoming data packets in networking applications.
-Suggested Diagram
- ###Here’s a simple description for flowchart and what to include and illustrating the architecture of an event-based system:
+Suggested Diagram.
+
+ ### Here’s a simple description for flowchart and what to include and illustrating the architecture of an event-based system:
+ 
 *Event Sources: Represent sensors, user inputs, or other triggers.
+
 *Event Queue: A buffer that holds events until they are processed.
-*Event Handlers: Functions or methods that respond to specific events.
+
+*Event Handlers: Functions or methods that respond to specific events
+.
 *Main Loop: The core of the system that checks for events and dispatches them to the appropriate handlers.
 
 ![Event_System_diagram](https://github.com/esraashawky111/Task-0.0/blob/main/Event%20_Based%20_diagram.png)
